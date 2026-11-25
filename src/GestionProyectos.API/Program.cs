@@ -27,17 +27,21 @@ builder.Services.AddScoped<ITareaService, TareaService>();
 
 var app = builder.Build();
 
+// Aplicar migraciones pendientes automáticamente al iniciar
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "GestionProyectos API v1");
-        c.RoutePrefix = string.Empty;
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GestionProyectos API v1");
+    c.RoutePrefix = string.Empty;
+});
 
 app.UseAuthorization();
 app.MapControllers();
