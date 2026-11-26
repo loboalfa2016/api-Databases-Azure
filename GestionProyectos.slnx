@@ -6,6 +6,9 @@
     <Project Path="src/GestionProyectos.Infrastructure/GestionProyectos.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/GestionProyectos.Tests/GestionProyectos.Tests.csproj" />
+    <Project Path="tests/GestionProyectos.API.xUnit/GestionProyectos.API.xUnit.csproj" />
+    <Project Path="tests/GestionProyectos.Application.xUnit/GestionProyectos.Application.xUnit.csproj" />
+    <Project Path="tests/GestionProyectos.Domain.xUnit/GestionProyectos.Domain.xUnit.csproj" />
+    <Project Path="tests/GestionProyectos.Infrastructure.xUnit/GestionProyectos.Infrastructure.xUnit.csproj" />
   </Folder>
 </Solution>
